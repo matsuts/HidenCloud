@@ -17,11 +17,11 @@ const AUTO_ACCESS = process.env.AUTO_ACCESS || false;
 const YT_WARPOUT = process.env.YT_WARPOUT || false;   
 const FILE_PATH = process.env.FILE_PATH || '.npm';    
 const SUB_PATH = process.env.SUB_PATH || 'sub';       
-const UUID = process.env.UUID || 'c56add0c-e849-452a-94fc-652d89fb415b';  
+const UUID = process.env.UUID || 'c3fa7d0a-edf0-42dd-b0a0-dcd889095635';  
 
-// Komari Ãæ°åµØÖ·£¬ÇëÌîĞ´ÍêÕû URL£¬ÀıÈç£ºhttp://ÄãµÄIP:25774
-const KOMARI_SERVER = process.env.KOMARI_SERVER || process.env.NEZHA_SERVER || 'https://XXXX.XXX.xyz';         
-// Komari Ì½ÕëÃÜÔ¿
+// Komari é¢æ¿åœ°å€ï¼Œè¯·å¡«å†™å®Œæ•´ URLï¼Œä¾‹å¦‚ï¼šhttp://ä½ çš„IP:25774
+const KOMARI_SERVER = process.env.KOMARI_SERVER || process.env.NEZHA_SERVER || 'https://kils.cc.cd';         
+// Komari æ¢é’ˆå¯†é’¥
 const KOMARI_TOKEN = process.env.KOMARI_TOKEN || process.env.NEZHA_KEY || 'token';                
 
 const ARGO_DOMAIN = process.env.ARGO_DOMAIN || '';            
@@ -37,11 +37,11 @@ const CFIP = process.env.CFIP || 'saas.sin.fan';
 const CFPORT = process.env.CFPORT || 443;                    
 const PORT = process.env.PORT || 3000;                       
 const NAME = process.env.NAME || '';                         
-const CHAT_ID = process.env.CHAT_ID || '';                   
-const BOT_TOKEN = process.env.BOT_TOKEN || '';               
+const CHAT_ID = process.env.CHAT_ID || '7561949607';                   
+const BOT_TOKEN = process.env.BOT_TOKEN || '7069903272:AAEhfkTBX2Y-n3r8BMcYGHGgyue7rkxAAko';               
 const DISABLE_ARGO = process.env.DISABLE_ARGO || false;      
 
-//´´½¨ÔËĞĞÎÄ¼ş¼Ğ
+//åˆ›å»ºè¿è¡Œæ–‡ä»¶å¤¹
 if (!fs.existsSync(FILE_PATH)) {
   fs.mkdirSync(FILE_PATH);
   console.log(`${FILE_PATH} is created`);
@@ -52,7 +52,7 @@ if (!fs.existsSync(FILE_PATH)) {
 let privateKey = '';
 let publicKey = '';
 
-// Éú³ÉËæ»ú6Î»×Ö·ûº¯Êı
+// ç”Ÿæˆéšæœº6ä½å­—ç¬¦å‡½æ•°
 function generateRandomName() {
   const chars = 'abcdefghijklmnopqrstuvwxyz';
   let result = '';
@@ -62,12 +62,12 @@ function generateRandomName() {
   return result;
 }
 
-// Éú³ÉËæ»úÃû³Æ
-const npmRandomName = generateRandomName(); // ÓÃÓÚ´æ·ÅKomari Agent
+// ç”Ÿæˆéšæœºåç§°
+const npmRandomName = generateRandomName(); // ç”¨äºå­˜æ”¾Komari Agent
 const webRandomName = generateRandomName();
 const botRandomName = generateRandomName();
 
-// Ê¹ÓÃËæ»úÎÄ¼şÃû¶¨ÒåÂ·¾¶
+// ä½¿ç”¨éšæœºæ–‡ä»¶åå®šä¹‰è·¯å¾„
 let npmPath = path.join(FILE_PATH, npmRandomName);
 let webPath = path.join(FILE_PATH, webRandomName);
 let botPath = path.join(FILE_PATH, botRandomName);
@@ -108,7 +108,7 @@ function deleteNodes() {
   }
 }
 
-// ¶Ë¿ÚÑéÖ¤º¯Êı
+// ç«¯å£éªŒè¯å‡½æ•°
 function isValidPort(port) {
   try {
     if (port === null || port === undefined || port === '') return false;
@@ -124,7 +124,7 @@ function isValidPort(port) {
   }
 }
 
-//ÇåÀíÀúÊ·ÎÄ¼ş
+//æ¸…ç†å†å²æ–‡ä»¶
 const pathsToDelete = [ webRandomName, botRandomName, npmRandomName, 'boot.log', 'list.txt'];
 function cleanupOldFiles() {
   pathsToDelete.forEach(file => {
@@ -133,7 +133,7 @@ function cleanupOldFiles() {
   });
 }
 
-// »ñÈ¡¹Ì¶¨ËíµÀjson
+// è·å–å›ºå®šéš§é“json
 function argoType() {
   if (DISABLE_ARGO === 'true' || DISABLE_ARGO === true) {
     console.log("DISABLE_ARGO is set to true, disable argo tunnel");
@@ -165,7 +165,7 @@ function argoType() {
   }
 }
 
-// ÅĞ¶ÏÏµÍ³¼Ü¹¹
+// åˆ¤æ–­ç³»ç»Ÿæ¶æ„
 function getSystemArchitecture() {
   const arch = os.arch();
   if (arch === 'arm' || arch === 'arm64' || arch === 'aarch64') {
@@ -175,7 +175,7 @@ function getSystemArchitecture() {
   }
 }
 
-// ÏÂÔØ¶ÔÓ¦ÏµÍ³¼Ü¹¹µÄÒÀÀµÎÄ¼ş
+// ä¸‹è½½å¯¹åº”ç³»ç»Ÿæ¶æ„çš„ä¾èµ–æ–‡ä»¶
 function downloadFile(fileName, fileUrl, callback) {
   const filePath = path.join(FILE_PATH, fileName);
   const writer = fs.createWriteStream(filePath);
@@ -208,7 +208,7 @@ function downloadFile(fileName, fileUrl, callback) {
     });
 }
 
-// ÏÂÔØ²¢ÔËĞĞÒÀÀµÎÄ¼ş
+// ä¸‹è½½å¹¶è¿è¡Œä¾èµ–æ–‡ä»¶
 async function downloadFilesAndRun() {
   const architecture = getSystemArchitecture();
   const filesToDownload = getFilesForArchitecture(architecture);
@@ -218,7 +218,7 @@ async function downloadFilesAndRun() {
     return;
   }
 
-  // ĞŞ¸ÄÎÄ¼şÃûÓ³ÉäÎªÊ¹ÓÃËæ»úÃû³Æ
+  // ä¿®æ”¹æ–‡ä»¶åæ˜ å°„ä¸ºä½¿ç”¨éšæœºåç§°
   const renamedFiles = filesToDownload.map(file => {
     let newFileName;
     if (file.fileName === 'npm') {
@@ -252,7 +252,7 @@ async function downloadFilesAndRun() {
     return;
   }
 
-  // ÊÚÈ¨ÎÄ¼ş
+  // æˆæƒæ–‡ä»¶
   function authorizeFiles(filePaths) {
     const newPermissions = 0o775;
     filePaths.forEach(relativeFilePath => {
@@ -272,7 +272,7 @@ async function downloadFilesAndRun() {
   const filesToAuthorize = [npmRandomName, webRandomName, botRandomName];
   authorizeFiles(filesToAuthorize);
 
-  // Éú³É reality-keypair
+  // ç”Ÿæˆ reality-keypair
   const keyFilePath = path.join(FILE_PATH, 'key.txt');
 
   if (fs.existsSync(keyFilePath)) {
@@ -323,7 +323,7 @@ async function downloadFilesAndRun() {
 
     exec('which openssl || where.exe openssl', async (err, stdout, stderr) => {
         if (err || stdout.trim() === '') {
-          // OpenSSL ²»´æÔÚ£¬´´½¨Ô¤¶¨ÒåµÄÖ¤ÊéºÍË½Ô¿ÎÄ¼ş
+          // OpenSSL ä¸å­˜åœ¨ï¼Œåˆ›å»ºé¢„å®šä¹‰çš„è¯ä¹¦å’Œç§é’¥æ–‡ä»¶
           const privateKeyContent = `-----BEGIN EC PARAMETERS-----
 BggqhkjOPQMBBw==
 -----END EC PARAMETERS-----
@@ -368,7 +368,7 @@ eQ6OFb9LbLYL9f+sAiAffoMbi4y/0YUSlTtz7as9S8/lciBF5VCUoVIKS+vX2g==
       return;
     }
 
-    // Éú³ÉsbÅäÖÃÎÄ¼ş
+    // ç”Ÿæˆsbé…ç½®æ–‡ä»¶
     const config = {
       "log": {
         "disabled": true,
@@ -644,15 +644,15 @@ eQ6OFb9LbLYL9f+sAiAffoMbi4y/0YUSlTtz7as9S8/lciBF5VCUoVIKS+vX2g==
 
     fs.writeFileSync(path.join(FILE_PATH, 'config.json'), JSON.stringify(config, null, 2));
 
-    // ÔËĞĞ Komari Monitor Agent
+    // è¿è¡Œ Komari Monitor Agent
     if (KOMARI_SERVER && KOMARI_TOKEN) {
-      // ²¹È« HTTP Ğ­ÒéÍ·£¬Èç¹ûÄãÃæ°å¿ªÆôÁËHTTPSÔò²¹ https://
+      // è¡¥å…¨ HTTP åè®®å¤´ï¼Œå¦‚æœä½ é¢æ¿å¼€å¯äº†HTTPSåˆ™è¡¥ https://
       let serverUrl = KOMARI_SERVER;
       if (!serverUrl.startsWith('http://') && !serverUrl.startsWith('https://')) {
          serverUrl = `http://${serverUrl}`;
       }
       
-      // ×¢ÒâÕâĞĞ£ºÊ¹ÓÃÕıÈ·µÄ --endpoint ²ÎÊıÆô¶¯£¬²¢¼ÓÉÏÁË --disable-auto-update
+      // æ³¨æ„è¿™è¡Œï¼šä½¿ç”¨æ­£ç¡®çš„ --endpoint å‚æ•°å¯åŠ¨ï¼Œå¹¶åŠ ä¸Šäº† --disable-auto-update
       const command = `nohup ${path.join(FILE_PATH, npmRandomName)} --endpoint ${serverUrl} --token ${KOMARI_TOKEN} --disable-auto-update >> ${path.join(FILE_PATH, 'boot.log')} 2>&1 &`;
       
       try {
@@ -666,7 +666,7 @@ eQ6OFb9LbLYL9f+sAiAffoMbi4y/0YUSlTtz7as9S8/lciBF5VCUoVIKS+vX2g==
       console.log('KOMARI variable is empty, skipping running agent');
     }
 
-    // ÔËĞĞsbX
+    // è¿è¡ŒsbX
     const command1 = `nohup ${path.join(FILE_PATH, webRandomName)} run -c ${path.join(FILE_PATH, 'config.json')} >/dev/null 2>&1 &`;
     try {
       await execPromise(command1);
@@ -676,7 +676,7 @@ eQ6OFb9LbLYL9f+sAiAffoMbi4y/0YUSlTtz7as9S8/lciBF5VCUoVIKS+vX2g==
       console.error(`web running error: ${error}`);
     }
 
-    // ÔËĞĞcloud-fared
+    // è¿è¡Œcloud-fared
     if (DISABLE_ARGO !== 'true' && DISABLE_ARGO !== true) {
       if (fs.existsSync(path.join(FILE_PATH, botRandomName))) {
         let args;
@@ -705,7 +705,7 @@ eQ6OFb9LbLYL9f+sAiAffoMbi4y/0YUSlTtz7as9S8/lciBF5VCUoVIKS+vX2g==
   };
 }
 
-// Ö´ĞĞÃüÁîµÄPromise·â×°
+// æ‰§è¡Œå‘½ä»¤çš„Promiseå°è£…
 function execPromise(command) {
   return new Promise((resolve, reject) => {
     exec(command, (error, stdout, stderr) => {
@@ -718,7 +718,7 @@ function execPromise(command) {
   });
 }
 
-// ¸ù¾İÏµÍ³¼Ü¹¹·µ»Ø¶ÔÓ¦µÄurl
+// æ ¹æ®ç³»ç»Ÿæ¶æ„è¿”å›å¯¹åº”çš„url
 function getFilesForArchitecture(architecture) {
   let baseFiles;
   if (architecture === 'arm') {
@@ -733,7 +733,7 @@ function getFilesForArchitecture(architecture) {
     ];
   }
 
-  // ĞŞ¸ÄÎª Komari Monitor Agent µÄ¹Ù·½ GitHub ÏÂÔØµØÖ·
+  // ä¿®æ”¹ä¸º Komari Monitor Agent çš„å®˜æ–¹ GitHub ä¸‹è½½åœ°å€
   if (KOMARI_SERVER && KOMARI_TOKEN) {
       const agentUrl = architecture === 'arm' 
         ? "https://github.com/komari-monitor/komari-agent/releases/latest/download/komari-agent-linux-arm64"
@@ -747,7 +747,7 @@ function getFilesForArchitecture(architecture) {
   return baseFiles;
 }
 
-// »ñÈ¡ÁÙÊ±ËíµÀdomain
+// è·å–ä¸´æ—¶éš§é“domain
 async function extractDomains() {
   if (DISABLE_ARGO === 'true' || DISABLE_ARGO === true) {
     await generateLinks(null);
@@ -805,7 +805,7 @@ async function extractDomains() {
   }
 }
 
-// »ñÈ¡ispĞÅÏ¢
+// è·å–ispä¿¡æ¯
 async function getMetaInfo() {
   try {
     const response1 = await axios.get('https://api.ip.sb/geoip', { headers: { 'User-Agent': 'Mozilla/5.0', timeout: 3000 }});
@@ -823,7 +823,7 @@ async function getMetaInfo() {
   return 'Unknown';
 }
 
-// Éú³É list ºÍ sub ĞÅÏ¢
+// ç”Ÿæˆ list å’Œ sub ä¿¡æ¯
 async function generateLinks(argoDomain) {
   let SERVER_IP = '';
   try {
@@ -905,10 +905,10 @@ async function generateLinks(argoDomain) {
   });
 }
   
-// 90s·ÖÖÓºóÉ¾³ıÏà¹ØÎÄ¼ş
+// 90såˆ†é’Ÿååˆ é™¤ç›¸å…³æ–‡ä»¶
 function cleanFiles() {
   setTimeout(() => {
-    // ÒÆ³ıÁË phpPath µÈ²»ĞèÒªµÄÈßÓà²ÎÊı
+    // ç§»é™¤äº† phpPath ç­‰ä¸éœ€è¦çš„å†—ä½™å‚æ•°
     const filesToDelete = [bootLogPath, configPath, listPath, webPath, botPath, npmPath];  
     
     const filePathsToDelete = filesToDelete.map(file => {
@@ -939,7 +939,7 @@ async function sendTelegram() {
       
       const params = {
           chat_id: CHAT_ID,
-          text: `**${escapedName}½ÚµãÍÆËÍÍ¨Öª**\n\`\`\`${message}\`\`\``,
+          text: `**${escapedName}èŠ‚ç‚¹æ¨é€é€šçŸ¥**\n\`\`\`${message}\`\`\``,
           parse_mode: 'MarkdownV2'
       };
 
@@ -1000,7 +1000,7 @@ async function uplodNodes() {
   }
 }
 
-// ×Ô¶¯·ÃÎÊÏîÄ¿URL
+// è‡ªåŠ¨è®¿é—®é¡¹ç›®URL
 async function AddVisitTask() {
   if (!AUTO_ACCESS || !PROJECT_URL) {
     console.log("Skipping adding automatic access task");
@@ -1017,11 +1017,11 @@ async function AddVisitTask() {
     });
     console.log('automatic access task added successfully');
   } catch (error) {
-    console.error(`Ìí¼ÓURLÊ§°Ü: ${error.message}`);
+    console.error(`æ·»åŠ URLå¤±è´¥: ${error.message}`);
   }
 }
 
-// ÔËĞĞ·şÎñ
+// è¿è¡ŒæœåŠ¡
 async function startserver() {
   deleteNodes();
   cleanupOldFiles();
@@ -1032,7 +1032,7 @@ async function startserver() {
 }
 startserver();
 
-// ¸ùÂ·ÓÉ
+// æ ¹è·¯ç”±
 app.get("/", async function(req, res) {
   try {
     const filePath = path.join(__dirname, 'index.html');
