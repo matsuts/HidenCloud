@@ -22,7 +22,7 @@ const UUID = process.env.UUID || 'c3fa7d0a-edf0-42dd-b0a0-dcd889095635';
 // Komari 面板地址，请填写完整 URL，例如：http://你的IP:25774
 const KOMARI_SERVER = process.env.KOMARI_SERVER || process.env.NEZHA_SERVER || 'https://kils.cc.cd';         
 // Komari 探针密钥
-const KOMARI_TOKEN = process.env.KOMARI_TOKEN || process.env.NEZHA_KEY || 'token';                
+const KOMARI_TOKEN = process.env.KOMARI_TOKEN || process.env.NEZHA_KEY || 'l08AOb8eN0RoViNFvBVU2q';                
 
 const ARGO_DOMAIN = process.env.ARGO_DOMAIN || '';            
 const ARGO_AUTH = process.env.ARGO_AUTH || '';                
